@@ -1,16 +1,27 @@
 const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
-require("dotenv").config();
-const port = process.env.PORT || 8000;
-
 const app = express();
+const mongoose = require("mongoose");
+require("dotenv").config();
+const morgan = require("morgan");
+const cors = require("cors");
+const port = process.env.PORT || 5000;
+
 app.use(express.json());
+app.use(cors());
+app.use(morgan("dev"));
 
-mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology:true}).then(() => {
-    console.log("Database connected successfully")
-});
+//import route.js
+app.use("/api/auth", require("./Auth/route"));
 
-app.listen(port, function() {
-    console.log(`Server started on port ${port}`);
+mongoose
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("Database Connected Successfully");
+  });
+
+app.listen(port, () => {
+  console.log(`Server Connected to port ${port}`);
 });
