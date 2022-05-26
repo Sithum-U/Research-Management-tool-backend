@@ -1,17 +1,18 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
-require("dotenv").config();
 const morgan = require("morgan");
 const cors = require("cors");
-const port = process.env.PORT || 5000;
+require("dotenv").config();
 
-app.use(express.json());
+//importing Routes
+const authRoutes = require("./routes/auth/auth");
+
+const port = process.env.PORT || 9000;
+const app = express();
 app.use(cors());
+app.use(express.json());
 app.use(morgan("dev"));
-
-//import route.js
-app.use("/api/auth", require("./Auth/route"));
+app.use(express.urlencoded({ extended: true }));
 
 mongoose
   .connect(process.env.MONGO_URL, {
@@ -19,9 +20,12 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("Database Connected Successfully");
+    console.log("Database Connected Successfully..");
   });
 
+//routes middlware
+app.use("/api/auth", authRoutes); //auth service Interface
+
 app.listen(port, () => {
-  console.log(`Server Connected to port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
