@@ -1,4 +1,4 @@
-const User = require("../models/user"); // importing user model based on mongoose schema
+const User = require("../../models/auth/user"); // importing user model based on mongoose schema
 const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res, next) => {

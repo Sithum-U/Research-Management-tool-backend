@@ -5,7 +5,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 //importing Routes
-const authRoutes = require("./routes/auth/auth");
+const authRoutes = require("./routes/auth/route");
 
 const port = process.env.PORT || 9000;
 const app = express();
