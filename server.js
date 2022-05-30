@@ -1,4 +1,3 @@
-const { cloudinary } = require("./routes/admin/utils/cloudinary");
 const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
@@ -13,6 +12,7 @@ app.use(cors());
 
 //importing Routes
 const authRoutes = require("./routes/auth/route");
+const imageUpload = require("./routes/admin/utils/imageUpload");
 
 const port = process.env.PORT || 8000;
 // app.use(cors());
@@ -31,6 +31,7 @@ mongoose
 
 //routes middlware
 app.use("/api/auth", authRoutes); //auth service Interface
+app.use("/api", imageUpload); //image upload service Interface
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
