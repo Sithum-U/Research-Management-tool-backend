@@ -1,19 +1,14 @@
 //importing supervisor model based on mongoose schema
 const express = require("express");
-const Supervisor = require("../models/supervisors/supervisorModel");
+const Supervisor = require("../../models/supervisors/supervisorModel");
 
 const router = express.Router();
 
 router.post("/add", (req, res) => {
-    const newSupervisor = new Supervisor({
-        supName: req.body.supName,
-        supEmail: req.body.supEmail,
-        supPassword: req.body.supPassword,
-        supResearchField: req.body.supResearchField,
-        supPhone: req.body.supPhone
-    });
-    supervisorSaved = newSupervisor.save();
-    res.json(supervisorSaved);
+    const newSupervisor = new Supervisor(req.body);
+    newSupervisor.save()
+        .then((supervisor) => res.json(supervisor))
+        .catch((err) => res.json(err));
 })
 
 router.get("/", (req, res) => {
@@ -32,11 +27,6 @@ router.get("/:id", (req, res) => {
         .catch((err) => res.json("Error: " + err));
 });
 
-router.get("/:researchField", (req, res) => {
-    Supervisor.find({supResearchField: req.params.researchField})
-        .then((supervisor) => res.json(supervisor))
-        .catch((err) => res.json("Error: " + err));
-});
 
 router.put("/updateSupervisor/:id", (req, res) => {
     Supervisor.findByIdAndUpdate(req.params.id)
