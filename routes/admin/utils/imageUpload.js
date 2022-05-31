@@ -24,7 +24,7 @@ router.post("/upload", async (req, res) => {
     res.json({ msg: "yaya" });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ err: "Cannot upload the image" });
+    res.status(500).json({ err: "Some error happened" });
   }
 });
 
