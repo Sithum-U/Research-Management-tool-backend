@@ -12,6 +12,7 @@ router.get("/images", async (req, res) => {
 
   const publicIds = resources.map((file) => file.public_id);
   res.send(publicIds);
+  // res.download(publicIds);
 });
 router.post("/upload", async (req, res) => {
   try {

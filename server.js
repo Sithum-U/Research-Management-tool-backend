@@ -11,7 +11,6 @@ app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
 
 //importing Routes
-const authRoutes = require("./routes/auth/route");
 const imageUpload = require("./routes/admin/utils/imageUpload");
 
 const port = process.env.PORT || 8000;
@@ -30,7 +29,6 @@ mongoose
   });
 
 //routes middlware
-app.use("/api/auth", authRoutes); //auth service Interface
 app.use("/api", imageUpload); //image upload service Interface
 
 app.listen(port, () => {
