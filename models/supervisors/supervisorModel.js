@@ -10,6 +10,7 @@ const supervisorSchema = new schema({
     supEmail: {
         type: String,
         required: true,
+        unique: [true, "THis email is already exists"],
         lowercase: true,
         validate(value) {
             if(!validator.isEmail(value)) throw new Error("Email is invalid...!");
