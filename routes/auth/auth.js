@@ -126,3 +126,10 @@ exports.getUser = (req, res, next) => {
     res.send(docs);
   });
 };
+
+//get user by id
+exports.getUserById = (req, res, next) => {
+  User.findById(req.params.id)
+    .then((user) => res.json(user))
+    .catch((err) => res.json("Error : " + err));
+};
