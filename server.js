@@ -23,6 +23,38 @@ const port = process.env.PORT || 8000;
 app.use(morgan("dev"));
 // app.use(express.urlencoded({ extended: true }));
 
+
+const nodemailer = require("nodemailer");
+
+app.post("/sendmail", cors(), async(req,res)=>{
+
+    let{text}  =req.body
+    const transport = nodemailer.createTransport({
+        service: "gmail",
+        auth:{
+            user: process.env.MAIL_FROM,
+            pass: process.env.MAIL_PASS
+        }
+    })
+    transport.sendMail({
+        from: process.env.MAIL_FROM,
+        to: process.env.MAIL_TO,
+        subject: "Here is the Feedback",
+        html: `<div classname="email" 
+        style="border: 1px solid black;
+        padding:20px;
+        font-family: sans-serif;
+        line-height: 2;
+        font-size: 20px;
+        ">
+        <h2>Here is Your Email</h2>
+        <p>${text}</p>
+    
+        <p>All the best, Panel Member</p>
+        </div>`
+    })
+})
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
