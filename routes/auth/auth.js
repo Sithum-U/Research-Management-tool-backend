@@ -119,3 +119,10 @@ exports.deleteUser = async (req, res, next) => {
         .json({ message: "An error occurred", error: error.message })
     );
 };
+
+//get user
+exports.getUser = (req, res, next) => {
+  User.find((err, docs) => {
+    res.send(docs);
+  });
+};
