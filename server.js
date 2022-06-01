@@ -5,14 +5,17 @@ const panelMemberRoutes = require("./routes/panel_member/panelMemberRoute");
 const panelRoutes = require("./routes/panel_member/panelRoute");
 const presentationRoutes = require("./routes/panel_member/presentationRoute");
 const bodyParser = require("body-parser");
+const pdf = require("html-pdf");
 require("dotenv").config();
 const port = process.env.PORT || 8000;
 
 const app = express();
 app.use(cors());
 app.use(express.json());
+const authRoutes = require("./routes/auth/auth");
 
 const nodemailer = require("nodemailer");
+const pdfTemplate = require('./documents/panelpdf');
 
 mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology:true,
     useNewUrlParser:true,
@@ -52,6 +55,15 @@ app.post("/sendmail", cors(), async(req,res)=>{
 app.use('/panelMember',panelMemberRoutes);
 app.use('/presentation',presentationRoutes);
 app.use('/panel',panelRoutes);
+app.use('/auth', authRoutes);
+app.use('/create-pdf', (req,res)=>{
+    pdf.create(pdfTemplate(req.data),{}).toFile('result.pdf',(err)=>{
+        if(err){
+            res.send(Promise.reject());
+        }
+        res.send(Promise.resolve());
+    });
+});
 
 app.listen(port, function() {
     console.log(`Server started on port ${port}`);
