@@ -5,6 +5,8 @@ const cors = require("cors");
 const panelMemberRoutes = require("./routes/panel_member/panelMemberRoute");
 const panelRoutes = require("./routes/panel_member/panelRoute");
 const presentationRoutes = require("./routes/panel_member/presentationRoute");
+const fileRoute = require("./routes/admin/file");
+const authRoutes = require("./routes/auth/route");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 const app = express();
@@ -34,11 +36,12 @@ mongoose
 
 //routes middlware
 app.use("/api", imageUpload); //image upload service Interface
-app.use('/panelMember',panelMemberRoutes);
-app.use('/presentation',presentationRoutes);
-app.use('/panel',panelRoutes);
+app.use("/api/auth", authRoutes); //auth service Interface
+app.use("/panelMember", panelMemberRoutes);
+app.use("/presentation", presentationRoutes);
+app.use("/panel", panelRoutes);
+app.use(fileRoute);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
-
