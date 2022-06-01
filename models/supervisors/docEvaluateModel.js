@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 const schema = mongoose.Schema;
 
 const docEvaluateSchema = new schema({
@@ -26,4 +25,7 @@ const docEvaluateSchema = new schema({
     comments: {
         type:String
     }
-})
+});
+
+const DocEvaluation = mongoose.model("documentEvaluations", docEvaluateSchema);
+module.exports = DocEvaluation;
