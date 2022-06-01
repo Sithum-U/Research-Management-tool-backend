@@ -37,6 +37,10 @@ const UserSchema = new Mongoose.Schema({
     default: "Basic",
     required: true,
   },
+
+  researchField: {
+    type: String,
+  },
 });
 
 const User = Mongoose.model("user", UserSchema);

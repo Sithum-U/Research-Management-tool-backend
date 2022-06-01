@@ -2,7 +2,7 @@ const User = require("../../models/auth/user"); // importing user model based on
 const bcrypt = require("bcryptjs");
 
 exports.register = async (req, res, next) => {
-  const { username, password, phone, email, role } = req.body;
+  const { username, password, phone, email, role, researchField } = req.body;
   if (password.length < 6) {
     return res.status(400).json({ message: "Password less than 6 characters" });
   }
@@ -13,6 +13,7 @@ exports.register = async (req, res, next) => {
       phone,
       email,
       role,
+      researchField,
     })
       .then((user) =>
         res.status(200).json({
