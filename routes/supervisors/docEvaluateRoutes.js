@@ -47,7 +47,7 @@ router.put("/updateDocEvaluation/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
     DocEvaluation.findByIdAndDelete(req.params.id)
         .then((evaluation) => res.json(evaluation.id))
-        .catch((err) => res.status(400).json("Error: " + err));
+        // .catch((err) => res.status(400).json("Error: " + err));
 });
 
 module.exports = router;
