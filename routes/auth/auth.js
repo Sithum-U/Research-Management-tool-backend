@@ -1,9 +1,8 @@
-const User = require("../../models/auth/user"); // importing user model based on mongoose schema
+const User = require("../../models/auth/user");
 const bcrypt = require("bcryptjs");
-// const router = require("./route");
 const router = require("express").Router();
 
-router.post("/register", async (req, res) => {
+router.post("/register", async(req,res)=>{
   const { username, password, phone, email, role } = req.body;
   if (password.length < 6) {
     return res.status(400).json({ message: "Password less than 6 characters" });

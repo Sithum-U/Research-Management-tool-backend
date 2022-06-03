@@ -23,7 +23,6 @@ const presentationMarksSchema = new mongoose.Schema({
     },
     total:{
         type:Number,
-        required:true
     },
     overoll:{
         type:String

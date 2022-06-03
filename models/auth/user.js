@@ -19,6 +19,12 @@ const UserSchema = new Mongoose.Schema({
   email: {
     type: String,
     required: true,
+  },
+  phone: {
+    type: Number,
+    minlength: 10,
+    maxlength: 10,
+    required: true,
     lowercase: true,
     validate(value) {
       if (!validator.isEmail(value)) throw new Error("Email is invalid!!!");
