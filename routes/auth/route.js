@@ -10,7 +10,7 @@ const {
 } = require("./auth");
 router.route("/register").post(register);
 router.route("/login").post(login);
-router.route("/update").put(update);
+router.route("/update/:id").put(update);
 router.route("/deleteUser/:id").delete(deleteUser);
 router.route("/getUser").get(getUser);
 router.route("/getUser/:id").get(getUserById);
