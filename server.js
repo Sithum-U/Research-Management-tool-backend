@@ -26,14 +26,13 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended: true}));
 
-const authRoutes = require("./routes/auth/auth");
 const nodemailer = require("nodemailer");
 // const pdfTemplate = require('./documents/panelpdf');
 
 //importing Routes
 const imageUpload = require("./routes/admin/utils/imageUpload");
 
-const port = process.env.PORT || 8000;
+
 // app.use(cors());
 // app.use(express.json());
 app.use(morgan("dev"));
@@ -80,7 +79,7 @@ mongoose
 //routes middlware
 app.use("/api", imageUpload); //image upload service Interface
 app.use("/api/auth", authRoutes); //auth service Interface
-app.use("/panel", panelRoutes);
+// app.use("/panel", panelRoutes);
 app.use(fileRoute);
 app.use('/panelMember',panelMemberRoutes);
 app.use('/presentation',presentationRoutes);
@@ -97,7 +96,7 @@ app.use('/create-pdf', (req,res)=>{
 app.use("/creategroup",CreateGroup) 
 app.use("/findtopic",Findtopic)
 app.use("/docsubmit",Docsubmit)
-app.use("/api/supervisors", supervisorRoutes);
+// app.use("/api/supervisors", supervisorRoutes);
 app.use("/api/docEvaluation", docEvaluationRoutes);
 
 
