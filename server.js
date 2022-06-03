@@ -5,6 +5,8 @@ const cors = require("cors");
 
 const panelMemberRoutes = require("./routes/panel_member/panelMemberRoute");
 const presentationRoutes = require("./routes/panel_member/presentationRoute");
+const fileRoute = require("./routes/admin/file");
+const authRoutes = require("./routes/auth/route");
 const bodyParser = require("body-parser");
 const CreateGroup = require("./routes/student/createGroupRout");
 const Findtopic = require("./routes/student/findTopicRoute");
@@ -77,6 +79,9 @@ mongoose
 
 //routes middlware
 app.use("/api", imageUpload); //image upload service Interface
+app.use("/api/auth", authRoutes); //auth service Interface
+app.use("/panel", panelRoutes);
+app.use(fileRoute);
 app.use('/panelMember',panelMemberRoutes);
 app.use('/presentation',presentationRoutes);
 app.use('/auth', authRoutes);
@@ -95,7 +100,7 @@ app.use("/docsubmit",Docsubmit)
 app.use("/api/supervisors", supervisorRoutes);
 app.use("/api/docEvaluation", docEvaluationRoutes);
 
+
 app.listen(port, function() {
     console.log(`Server started on port ${port}`);
 });
-
