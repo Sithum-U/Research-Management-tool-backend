@@ -26,6 +26,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended: true}));
 
+// const authRoutes = require("./routes/auth/auth");
 const nodemailer = require("nodemailer");
 // const pdfTemplate = require('./documents/panelpdf');
 
