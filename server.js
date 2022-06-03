@@ -5,6 +5,9 @@ const cors = require("cors");
 const panelMemberRoutes = require("./routes/panel_member/panelMemberRoute");
 const presentationRoutes = require("./routes/panel_member/presentationRoute");
 const bodyParser = require("body-parser");
+const CreateGroup = require("./routes/student/createGroupRout");
+const Findtopic = require("./routes/student/findTopicRoute");
+const Docsubmit = require("./routes/student/docSubmitRoute");
 const pdf = require("html-pdf");
 require("dotenv").config();
 const app = express();
@@ -14,8 +17,8 @@ app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(cors());
 app.use(express.json());
-const authRoutes = require("./routes/auth/auth");
 
+const authRoutes = require("./routes/auth/auth");
 const nodemailer = require("nodemailer");
 // const pdfTemplate = require('./documents/panelpdf');
 
@@ -79,8 +82,13 @@ app.use('/create-pdf', (req,res)=>{
         res.send(Promise.resolve());
     });
 });
+app.use("/creategroup",CreateGroup) 
+app.use("/findtopic",Findtopic)
+app.use("/docsubmit",Docsubmit)
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
 
