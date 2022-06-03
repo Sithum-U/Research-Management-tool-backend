@@ -1,17 +1,8 @@
-<<<<<<< HEAD
 const User = require("../../models/auth/user");
 const bcrypt = require("bcryptjs");
 const router = require("express").Router();
 
 router.post("/register", async(req,res)=>{
-=======
-const User = require("../../models/auth/user"); // importing user model based on mongoose schema
-const bcrypt = require("bcryptjs");
-// const router = require("./route");
-const router = require("express").Router();
-
-router.post("/register", async (req, res) => {
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5
   const { username, password, phone, email, role } = req.body;
   if (password.length < 6) {
     return res.status(400).json({ message: "Password less than 6 characters" });
@@ -38,10 +29,6 @@ router.post("/register", async (req, res) => {
       );
   });
 });
-<<<<<<< HEAD
-
-=======
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5
 // exports.register = async (req, res, next) => {
 //   const { username, password, phone, email, role } = req.body;
 //   if (password.length < 6) {
@@ -71,11 +58,7 @@ router.post("/register", async (req, res) => {
 // };
 
 // exports.login = async (req, res, next) => {
-<<<<<<< HEAD
-//   const { username, password } = req.body;
-=======
 //   const { username, password } = req.body; //creating a new user object with the request body
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5
 //   // Check if username and password is provided
 //   if (!username || !password) {
 //     return res.status(400).json({
@@ -108,10 +91,7 @@ router.post("/register", async (req, res) => {
 //   }
 // };
 
-<<<<<<< HEAD
-=======
 // modify user
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5
 // exports.update = async (req, res, next) => {
 //   const { role, id } = req.body;
 //   // First - Verifying if role and id is presnt
@@ -153,10 +133,7 @@ router.post("/register", async (req, res) => {
 //   }
 // };
 
-<<<<<<< HEAD
-=======
 // delete user
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5
 // exports.deleteUser = async (req, res, next) => {
 //   const { id } = req.body;
 //   await User.findById(id)
@@ -171,8 +148,4 @@ router.post("/register", async (req, res) => {
 //     );
 // };
 
-<<<<<<< HEAD
 module.exports = router;
-=======
-module.exports = router;
->>>>>>> 67c505ece4d84b1fb98f49efc2762ac4726940c5

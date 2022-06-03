@@ -17,7 +17,7 @@ app.use(express.json());
 const authRoutes = require("./routes/auth/auth");
 
 const nodemailer = require("nodemailer");
-const pdfTemplate = require('./documents/panelpdf');
+// const pdfTemplate = require('./documents/panelpdf');
 
 //importing Routes
 const imageUpload = require("./routes/admin/utils/imageUpload");
@@ -27,9 +27,6 @@ const port = process.env.PORT || 8000;
 // app.use(express.json());
 app.use(morgan("dev"));
 // app.use(express.urlencoded({ extended: true }));
-
-
-const nodemailer = require("nodemailer");
 
 app.post("/sendmail", cors(), async(req,res)=>{
 
