@@ -79,7 +79,7 @@ mongoose
 //routes middlware
 app.use("/api", imageUpload); //image upload service Interface
 app.use("/api/auth", authRoutes); //auth service Interface
-app.use("/panel", panelRoutes);
+// app.use("/panel", panelRoutes);
 app.use(fileRoute);
 app.use('/panelMember',panelMemberRoutes);
 app.use('/presentation',presentationRoutes);
@@ -96,7 +96,7 @@ app.use('/create-pdf', (req,res)=>{
 app.use("/creategroup",CreateGroup) 
 app.use("/findtopic",Findtopic)
 app.use("/docsubmit",Docsubmit)
-app.use("/api/supervisors", supervisorRoutes);
+// app.use("/api/supervisors", supervisorRoutes);
 app.use("/api/docEvaluation", docEvaluationRoutes);
 
 
