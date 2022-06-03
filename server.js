@@ -26,14 +26,13 @@ app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.urlencoded({extended: true}));
 
-const authRoutes = require("./routes/auth/auth");
+// const authRoutes = require("./routes/auth/auth");
 const nodemailer = require("nodemailer");
 // const pdfTemplate = require('./documents/panelpdf');
 
 //importing Routes
 const imageUpload = require("./routes/admin/utils/imageUpload");
 
-const port = process.env.PORT || 8000;
 // app.use(cors());
 // app.use(express.json());
 app.use(morgan("dev"));
